@@ -5,7 +5,7 @@ from celery import shared_task
 from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
 from time import sleep
-from apps.manager.models import Team, Match, Statistic
+from .models import Team, Match, Statistic
 
 
 @shared_task
@@ -14,8 +14,10 @@ def team_score():
     headers = {
         'User-Agent': useragent.random,
     }
+
     COUNTRY = {'england': 2, 'ukraine': 1, 'germany': 3, 'spain': 4,
                'italy': 5, 'netherlands': 6, 'portugal': 7, 'france': 8}
+
     for url in COUNTRY.keys():
         sleep(random.randint(3, 7))
         URL_COUNTRY = f'https://football.ua/{url}/table.html'
@@ -111,6 +113,7 @@ def score_update():
             print(MATCH_URL, host, guest, score_ended)
             Match.objects.filter(guest_team_id=guest.id, host_team_id=host.id).update(score_ended=score_ended)
 
+
 @shared_task
 def players_statistic():
     useragent = UserAgent()
@@ -162,6 +165,7 @@ def players_statistic():
                 Statistic.objects.filter(name=name).update(team=team_id, games=int(games), goals=int(goals),
                                                            assists=int(assists), goal_plus_pass=int(goal_plus_pass),
                                                            yellow_cards=int(yellow_cards), red_cards=int(red_cards))
+
 
 @shared_task
 def team_info():

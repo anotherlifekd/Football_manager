@@ -26,6 +26,7 @@ class Team(models.Model):
     name = models.CharField(max_length=32, unique=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='team')
     score = models.SmallIntegerField()
+
     # info
     president = models.CharField(max_length=32, blank=True, null=True)
     coach = models.CharField(max_length=32, blank=True, null=True)
@@ -72,11 +73,3 @@ class Match(models.Model):
 
     class Meta:
         verbose_name_plural = "Matches"
-
-
-
-
-
-
-
-

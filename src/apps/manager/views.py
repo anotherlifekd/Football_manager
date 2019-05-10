@@ -48,7 +48,8 @@ class MatchView(generics.ListAPIView):
     serializer_class = MatchSerializer
     queryset = Match.objects.all()
     filter_backends = (DjangoFilterBackend, OrderingFilter, SearchFilter)
-    filter_fields = ('id', 'country__name', 'tour', 'host_team', 'guest_team', 'date_and_time', 'score_ended', 'round')
+    filter_fields = ('id', 'country__name', 'tour', 'host_team', 'guest_team',
+                     'date_and_time', 'score_ended', 'round')
     ordering_fields = ('country__name', 'tour', 'host_team', 'guest_team', 'date_and_time', 'round')
     search_fields = ('country__name', 'host_team__name', 'guest_team__name')
 

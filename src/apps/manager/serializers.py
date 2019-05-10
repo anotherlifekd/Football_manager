@@ -11,7 +11,8 @@ class MatchSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Match
-        fields = ('id', 'country_name', 'tour_name', 'host_team_name', 'guest_team_name', 'date_and_time', 'score_ended', 'round')
+        fields = ('id', 'country_name', 'tour_name', 'host_team_name', 'guest_team_name',
+                  'date_and_time', 'score_ended', 'round')
 
 
 class TeamSerializer(serializers.ModelSerializer):

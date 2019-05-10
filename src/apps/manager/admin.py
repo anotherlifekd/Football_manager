@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apps.manager.models import Country, Tournament, Team, Statistic, Match
+from .models import Country, Tournament, Team, Statistic, Match
 
 
 @admin.register(Country)
@@ -38,5 +38,3 @@ class MatchAdmin(admin.ModelAdmin):
     list_per_page = 20
     search_fields = ['country__name', 'host_team__name', 'guest_team__name']
     list_display_links = ('score_ended', )
-
-

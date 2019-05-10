@@ -138,7 +138,7 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Europe/Kiev'
 CELERY_BEAT_SCHEDULE = {'team_score': {
         'task': 'apps.manager.tasks.team_score',
-        'schedule': crontab(month_of_year='*/1'),
+        'schedule': crontab(minute=43, hour=00),
         'args': []
         },
         'score_update': {
@@ -157,7 +157,6 @@ CELERY_BEAT_SCHEDULE = {'team_score': {
         'args': []
         }
 }
-
 
 
 DATETIME_FORMAT = 'd B Y H:M'
